@@ -1,0 +1,99 @@
+﻿
+@{
+	ViewBag.Title = "Add Plot Type";
+	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+@using System.Data;
+<div class="container">
+	<div class="card border-0 shadow-lg mb-4">
+		<div class="card-header bg-primary pl-3 pb-0">
+			<h5 class="h5 text-white font-weight-bold mb-4">ADD PLOT TYPE</h5>
+		</div>
+		<div class="card-body p-0">
+			<div class="row">
+				<div class="col-lg-1 d-none d-lg-block"></div>
+				<div class="col-lg-10">
+					<div class="p-3">
+						<form>
+
+							<div class="form-group row">
+								<div class="col-sm-6">
+									<label>Plot Type</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6 pb-5">
+									<input type="submit" value="ADD" class="btn btn-primary btn-block mt-4" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-1 d-none d-lg-block"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Plot Type Details</h5>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Sr. No.</th>
+									<th>Plot Type</th>
+									<th>Date</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr style="background-color:White;">
+									<td>1</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_PlotTypeName_1">East facing</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_Date_1">12-Apr-2019</span>
+									</td>
+									<td>
+										<a href="javascript:void(0)" class="btn btn-sm text-primary" onclick="_update('')"><i class="fa fa-edit"></i></a>
+										<a href="javascript:void(0)" class="btn btn-sm text-danger" onclick="_delete('')"><i class="fa fa-trash"></i></a>
+									</td>
+								</tr>
+								@{
+									int i = 0;
+									string Image = null;
+									if (1 == 0/*Model.dt != null && Model.dt.Rows.Count > 0*/)
+									{
+										foreach (DataRow dr in Model.dt.Rows)
+										{
+											i++;
+											Image = dr["Profile"].ToString();
+											<tr>
+												<td>@i</td>
+												<td>@dr["Name"]</td>
+												<td>
+													<a href="javascript:void(0)" class="btn btn-sm text-primary" onclick="_update('@dr["Id"]')"><i class="fa fa-edit"></i></a>
+													<a href="javascript:void(0)" class="btn btn-sm text-danger" onclick="_delete('@dr["Id"]')"><i class="fa fa-trash"></i></a>
+												</td>
+											</tr>
+										}
+									}
+								}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

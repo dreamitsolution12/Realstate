@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "Add Site";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+@using System.Data;
+<div class="container">
+	<div class="card border-0 shadow-lg mb-4">
+		<div class="card-header bg-primary pl-3 pb-0">
+			<h5 class="h5 text-white font-weight-bold mb-4">ADD SITE DETAILS</h5>
+		</div>
+		<div class="card-body p-0">
+			<div class="row">
+				<div class="col-lg-1 d-none d-lg-block"></div>
+				<div class="col-lg-10">
+					<div class="p-3">
+						<form>
+							<div class="form-group row">
+								<div class="col-sm-6">
+									<label>Property ID</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-6">
+									<label>Site Name</label>
+									<input type="text" class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Farmer Name</label>
+									<input type="text" class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Site Location</label>
+									<input type="text" class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Area/Size</label>
+									<input type="text" class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>No. Of Plots</label>
+									<input type="text" class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Actual Amount</label>
+									<input type="text" class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Paid Amount</label>
+									<input type="text" class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Due Amount</label>
+									<input type="text" class="form-control" readonly />
+								</div>
+								<div class="col-sm-6">
+									<label>Project Image</label>
+									<input type="file" class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Date</label>
+									<input type="date" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<input type="submit" value="ADD" class="btn btn-primary btn-block" id="btn_addAgent" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-1 d-none d-lg-block"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Site Details</h5>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Sr. No.</th>
+									<th>Image</th>
+									<th>Site Name</th>
+									<th>Provider Name</th>
+									<th>Site Location</th>
+									<th>Property Size</th>
+									<th>No. of Plots</th>
+									<th>Price</th>
+									<th>Actual Amount</th>
+									<th>Paid Amount</th>
+									<th>Due Amount</th>
+									<th>Date</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_ID_0">1</span>
+									</td>
+									<td>
+										<img id="ContentPlaceHolder1_GridView1_Image1_0" src="ImageHandler1.ashx?ImID=" style="height:100px;width:100px;">
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_siteName_0">Site 1</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_providername_0"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_location_0">LUCKNOW</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_size_0"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_plot_0">0</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_des_0"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_price_0">0.00</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_paid_0">0.00</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_due_0">0.00</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_GridView1_lbl_date_0">23-Apr-2019</span>
+									</td>
+									<td>
+										<a href="javascript:void(0)" class="btn btn-sm text-primary" onclick="_update('')"><i class="fa fa-edit"></i></a>
+										<a href="javascript:void(0)" class="btn btn-sm text-danger" onclick="_delete('')"><i class="fa fa-trash"></i></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
