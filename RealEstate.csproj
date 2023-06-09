@@ -132,6 +132,7 @@
     <Compile Include="Models\CommonBase.cs" />
     <Compile Include="DataBase\DbLayer.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\SalePlot.cs" />
     <Compile Include="Models\SiteMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionHandler\SessionCheck.cs" />
@@ -2167,6 +2168,7 @@
     <Content Include="AdminAssets\vendor\jquery\jquery.min.map" />
     <Content Include="AdminAssets\vendor\jquery\jquery.slim.min.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\CommonJS\Common.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />

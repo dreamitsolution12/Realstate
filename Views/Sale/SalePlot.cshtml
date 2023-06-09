@@ -1,10 +1,10 @@
-﻿
+﻿@model RealEstate.Models.SalePlot
 @{
 	ViewBag.Title = "Sale Plot";
 	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
 }
-
-<div class="container">
+<script src="~/Scripts/CommonJS/Common.js"></script>
+<div class="container-fluid">
 	<div class="card border-0 shadow-lg mb-4">
 		<div class="card-header bg-primary pl-3 pb-0">
 			<h5 class="h5 text-white font-weight-bold mb-4">Plot Sale Details</h5>
@@ -15,7 +15,7 @@
 				<div class="col-lg-12">
 					<div class="p-4">
 						<form>
-							<div class="row mt-3 d-none">
+							@*<div class="row mt-3 d-none">
 								<div class="col-sm-3">
 									<input type="radio" name="saletype" />Sale to Customer
 								</div>
@@ -23,20 +23,12 @@
 									<input type="radio" name="saletype" />Sale to Agent
 								</div>
 							</div>
-							<hr />
+							<hr />*@
 							<a href="javascript:void(0)" class="font-weight-bold">Agent Details</a>
 							<div class="form-group row mb-4 mt-3">
 								<div class="col-sm-4">
 									<label>Select Agent</label>
-									<select class="form-control">
-										<option>Select</option>
-										<option value="2">Agent(0001)</option>
-										<option value="3">Agent(0002)</option>
-										<option value="4">Agent(0003)</option>
-										<option value="5">Agent(0004)</option>
-										<option value="6">Agent(0005)</option>
-
-									</select>
+									@Html.DropDownListFor(m => m.AgentId, Model.AgentLst, new {@class="form-control"})
 								</div>
 								<div class="col-sm-4">
 									<label>Agent Code</label>
@@ -50,21 +42,13 @@
 							<hr />
 							<a href="javascript:void(0)" class="font-weight-bold">Customer Details</a>
 							<div class="form-group row mb-4 mt-3">
-								<div class="col-sm-5">
+								<div class="col-sm-6">
 									<label>Name</label>
 									<input class="form-control" />
 								</div>
-								<div class="col-sm-2">
-									<label>Title</label>
-									<select class="form-control">
-										<option>Select</option>
-										<option value="S/O">S/O</option>
-										<option value="D/O">D/O</option>
-										<option value="W/O">W/O</option>
-									</select>
-								</div>
-								<div class="col-sm-5">
-									<label>S/W/D OF:</label>
+								
+								<div class="col-sm-6">
+									<label>Father Name</label>
 									<input class="form-control" />
 								</div>
 								<div class="col-sm-8">
@@ -158,13 +142,10 @@
 							<hr />
 							<a href="javascript:void(0)" class="font-weight-bold">Plot Details</a>
 							<div class="form-group row mb-4 mt-3">
-								<div class="col-sm-4">
-									<label>Property Name</label>
-									<select class="form-control">
-										<option>Select</option>
-										<option value="Lucknow">Lucknow</option>
-									</select>
-								</div>
+                                <div class="col-sm-4">
+                                    <label>Property Name</label>
+                                    @Html.DropDownListFor(m => m.SiteId, Model.SiteLst, new { @class = "form-control" })
+                                </div>
 								<div class="col-sm-4">
 									<label>Block</label>
 									<select class="form-control">

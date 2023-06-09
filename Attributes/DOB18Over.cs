@@ -12,7 +12,9 @@ namespace RealEstate.Attributes
         {
             DateTime dob;
             try { dob = Convert.ToDateTime(value); }
-            catch (InvalidCastException exc) { return new ValidationResult(ErrorMessage); }
+            catch (InvalidCastException exc) { 
+                return new ValidationResult(ErrorMessage); 
+            }
             if (DateTime.Today.AddYears(-18) >= dob)
                 return ValidationResult.Success;
             else

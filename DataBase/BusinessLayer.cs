@@ -15,6 +15,28 @@ namespace RealEstate.DataBase
 
         #region _qe
 
+        internal DataTable GetMasterData(string Action, string id1 = null, string id2 = null, string id3 = null, string id4 = null, string id5 = null)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] para = new SqlParameter[] {
+                new SqlParameter("@Action",Action),
+                new SqlParameter("@P1",id1),
+                new SqlParameter("@P2",id2),
+                new SqlParameter("@P3",id3),
+                new SqlParameter("@P4",id4),
+                new SqlParameter("@P5",id5)
+                };
+                dt = dbl.ExecProcPara_dt("USP_GetMasterData", para);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return dt;
+            }
+        }
+        
         public DataTable GetLogins(Login obj)
         {
             DataTable dt = new DataTable();

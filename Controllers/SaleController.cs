@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RealEstate.DataBase;
+using RealEstate.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,7 @@ namespace RealEstate.Controllers
 {
     public class SaleController : Controller
     {
+        BusinessLayer bl = new BusinessLayer();
         // GET: Sale
         public ActionResult Index()
         {
@@ -31,7 +34,13 @@ namespace RealEstate.Controllers
 
         public ActionResult SalePlot()
         {
-            return View();
+            SalePlot obj = new SalePlot();
+
+            obj.AgentLst = CommonBase.BindDDl(bl.GetMasterData("1"));
+            obj.SiteLst = CommonBase.BindDDl(bl.GetMasterData("2"));
+
+
+            return View(obj);
         }
 
         public ActionResult PlotRegistry()
