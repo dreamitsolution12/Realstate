@@ -2232,6 +2232,7 @@
     <Content Include="Views\Sale\SalePlot.cshtml" />
     <Content Include="Views\Sale\PlotRegistry.cshtml" />
     <Content Include="Views\Sale\PlotAgreement.cshtml" />
+    <Content Include="Views\Home\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

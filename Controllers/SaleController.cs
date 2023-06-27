@@ -39,7 +39,22 @@ namespace RealEstate.Controllers
             obj.AgentLst = CommonBase.BindDDl(bl.GetMasterData("1"));
             obj.SiteLst = CommonBase.BindDDl(bl.GetMasterData("2"));
 
+            return View(obj);
+        }
+        [HttpPost]
+        public ActionResult SalePlot(SalePlot obj)
+        {
 
+
+
+
+
+
+
+
+
+            obj.AgentLst = CommonBase.BindDDl(bl.GetMasterData("1"));
+            obj.SiteLst = CommonBase.BindDDl(bl.GetMasterData("2"));
             return View(obj);
         }
 

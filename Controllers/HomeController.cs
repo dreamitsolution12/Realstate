@@ -12,6 +12,11 @@ namespace RealEstate.Controllers
     {
         BusinessLayer bl = new BusinessLayer();
 
+        public ActionResult test()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             return View();

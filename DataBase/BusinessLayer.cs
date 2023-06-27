@@ -132,5 +132,80 @@ namespace RealEstate.DataBase
 
         #endregion
 
+        #region SalePlot
+
+        public DataTable SalePlot(string Action,SalePlot obj)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] sp = new SqlParameter[]
+                {
+                    new SqlParameter("@Action", Action),
+                    new SqlParameter("@AgentId", obj.AgentId),
+                    new SqlParameter("@SiteId", obj.SiteId),
+                    new SqlParameter("@Name", obj.Name),
+                    new SqlParameter("@FatherName", obj.FatherName),
+                    new SqlParameter("@PermanentAddress", obj.PermanentAddress),
+                    new SqlParameter("@PinCode", obj.PinCode),
+                    new SqlParameter("@City", obj.City),
+                    new SqlParameter("@State", obj.State),
+                    new SqlParameter("@C_Address", obj.C_Address),
+                    new SqlParameter("@C_PinCode", obj.C_PinCode),
+                    new SqlParameter("@C_City", obj.C_City),
+                    new SqlParameter("@C_State", obj.C_State),
+                    new SqlParameter("@PhoneNo", obj.PhoneNo),
+                    new SqlParameter("@Email", obj.Email),
+                    new SqlParameter("@PanNo", obj.PanNo),
+                    new SqlParameter("@Occupation", obj.Occupation),
+                    new SqlParameter("@Nationality", obj.Nationality),
+                    new SqlParameter("@AadharFront_url", obj.AadharFront_url),
+                    new SqlParameter("@AadharBack_url", obj.AadharBack_url),
+                    new SqlParameter("@DL_url", obj.DL_url),
+                    new SqlParameter("@PAN_url", obj.PAN_url),
+                    new SqlParameter("@NomineeName", obj.NomineeName),
+                    new SqlParameter("@Relation", obj.Relation),
+                    new SqlParameter("@PropertyId", obj.PropertyId),
+                    new SqlParameter("@Block", obj.Block),
+                    new SqlParameter("@PlotNo", obj.PlotNo),
+                    new SqlParameter("@DevelopmentCharge", obj.DevelopmentCharge),
+                    new SqlParameter("@DevelopmentRate", obj.DevelopmentRate),
+                    new SqlParameter("@PlotRate", obj.PlotRate),
+                    new SqlParameter("@PlotArea", obj.PlotArea),
+                    new SqlParameter("@PlotCost", obj.PlotCost),
+                    new SqlParameter("@PLCAmount", obj.PLCAmount),
+                    new SqlParameter("@OtherCharges", obj.OtherCharges),
+                    new SqlParameter("@FinalPayable", obj.FinalPayable),
+                    new SqlParameter("@Discount", obj.Discount),
+                    new SqlParameter("@TotalPlotCost", obj.TotalPlotCost),
+                    new SqlParameter("@Date", obj.Date),
+                    new SqlParameter("@Remark", obj.Remark),
+                    new SqlParameter("@PlanType", obj.PaymentType),
+                    new SqlParameter("@BookingAmount", obj.BookingAmount),
+                    new SqlParameter("@DueAmount", obj.DueAmount),
+                    new SqlParameter("@PaymentMode", obj.PaymentMode),
+                    new SqlParameter("@AC_Number", obj.AC_Number),
+                    new SqlParameter("@IFSC", obj.IFSC),
+                    new SqlParameter("@BankName", obj.BankName),
+                    new SqlParameter("@BranchName", obj.BranchName),
+                    new SqlParameter("@ChequeDate", obj.ChequeDate),
+                    new SqlParameter("@TransactionID", obj.TransactionID),
+                    new SqlParameter("@EMI_Month", obj.EMI_Month),
+                    new SqlParameter("@InstallmentAmount", obj.InstallmentAmount),
+                    new SqlParameter("@Is_Reminder", obj.Is_Reminder),
+                    new SqlParameter("@Payment_Remark", obj.Payment_Remark),
+                };
+                dt = dbl.ExecProcPara_dt("USP_SalePlot", sp);
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            return dt;
+        }
+
+
+        #endregion
+
     }
 }

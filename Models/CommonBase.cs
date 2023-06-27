@@ -95,10 +95,8 @@ namespace RealEstate.Models
                 return "0";
             }
         }
-        public static string ConvertTableToList(DataTable dt)
+        public static string ConvertTableToJSON(DataTable dt)
         {
-
-
             JavaScriptSerializer js = new JavaScriptSerializer();
             if (dt != null && dt.Rows.Count > 0)
             {

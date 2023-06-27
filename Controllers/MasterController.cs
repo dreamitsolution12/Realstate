@@ -12,9 +12,15 @@ namespace RealEstate.Controllers
     {
         BusinessLayer bl = new BusinessLayer();
 
-        public string GetMasterData(string Action, string P1, string P2, string P3,string P4,string P5)
+        public JsonResult GetDDLData(string Action, string P1, string P2, string P3,string P4,string P5)
         {
-            return CommonBase.ConvertTableToList(bl.GetMasterData(Action,P1,P2,P3,P4,P5));
+            var lst= CommonBase.BindDDl(bl.GetMasterData(Action,P1,P2,P3,P4,P5));
+            return Json(lst, JsonRequestBehavior.AllowGet);
+        }
+        public string GetMasterData(string Action, string P1, string P2, string P3, string P4, string P5)
+        {
+            var json = CommonBase.ConvertTableToJSON(bl.GetMasterData(Action, P1, P2, P3, P4, P5));
+            return json;
         }
         // GET: Master
         public ActionResult Index()
