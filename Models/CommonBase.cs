@@ -23,7 +23,7 @@ namespace RealEstate.Models
         public string IP { get; set; }
         public string msg { get; set; }
 
-        public  string SaveFile(HttpPostedFileBase _file, string _location)
+        public string SaveFile(HttpPostedFileBase _file, string _location)
         {
             string _path = null;
             if (_file != null)
@@ -36,7 +36,7 @@ namespace RealEstate.Models
             return _path;
         }
 
-        public  string SaveFiles(HttpPostedFileBase[] _files, string _location)
+        public string SaveFiles(HttpPostedFileBase[] _files, string _location)
         {
             string _path = null;
             if (_files != null)
@@ -74,7 +74,7 @@ namespace RealEstate.Models
             return list;
         }
 
-        public static string apicall(string url)
+        public string apicall(string url)
         {
             HttpWebRequest httpreq = (HttpWebRequest)WebRequest.Create(url);
 
@@ -95,8 +95,11 @@ namespace RealEstate.Models
                 return "0";
             }
         }
-        public static string ConvertTableToJSON(DataTable dt)
+
+        public string ConvertTableToList(DataTable dt)
         {
+
+
             JavaScriptSerializer js = new JavaScriptSerializer();
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -149,7 +152,7 @@ namespace RealEstate.Models
             return new string(chars);
         }
 
-        public static string ConvertDataTabletoString(DataTable dt)
+        public string ConvertDataTabletoString(DataTable dt)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
@@ -166,7 +169,7 @@ namespace RealEstate.Models
             return serializer.Serialize(rows);
         }
 
-        public static string GetIP()
+        public string GetIP()
         {
             string IP = "";
             string ipAdd = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];

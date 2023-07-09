@@ -5,17 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RealEstate.DataBase;
+using System.Data;
 
 namespace RealEstate.Controllers
 {
     public class HomeController : Controller
     {
         BusinessLayer bl = new BusinessLayer();
-
-        public ActionResult test()
-        {
-            return View();
-        }
 
         public ActionResult Index()
         {
@@ -35,10 +31,40 @@ namespace RealEstate.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult Contact(Contact obj)
+        {
+            try
+            {
+                obj.Action = 1;
+                DataTable dt = bl.Contact(obj);
+                if (dt.Rows.Count>0)
+                {
+                    Response.Write("<script>alert('"+dt.Rows[0]["msg"].ToString()+"')</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Server error occured!')();</script>");
+                }
+
+
+
+            }
+            catch(Exception exc) 
+            {
+                throw; 
+            }
+
+            ModelState.Clear();
+            return View(obj);
+        }
 
         public ActionResult Properties()
         {
-            return View();
+            PlotMaster obj = new PlotMaster();
+            obj.Action = 2;
+            obj.dt = bl.PlotMaster(obj);
+            return View(obj);
         }
 
         public ActionResult PropertyDetails()

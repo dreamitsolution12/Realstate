@@ -15,6 +15,7 @@ namespace RealEstate.DataBase
 
         #region _qe
 
+
         internal DataTable GetMasterData(string Action, string id1 = null, string id2 = null, string id3 = null, string id4 = null, string id5 = null)
         {
             DataTable dt = new DataTable();
@@ -36,7 +37,8 @@ namespace RealEstate.DataBase
                 return dt;
             }
         }
-        
+
+
         public DataTable GetLogins(Login obj)
         {
             DataTable dt = new DataTable();
@@ -130,7 +132,59 @@ namespace RealEstate.DataBase
             return dt;
         }
 
+        public DataTable PlotMaster(PlotMaster obj)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] sp = new SqlParameter[]
+                {
+                    new SqlParameter("@Id", obj.Id),
+                    new SqlParameter("@SiteId", obj.SiteName),
+                    new SqlParameter("@BlockId", obj.BlockName),
+                    new SqlParameter("@PlotTypeId", obj.PlotType),
+                    new SqlParameter("@PlotNumber", obj.PlotNumber),
+                    new SqlParameter("@PlotRate", obj.PlotRate),
+                    new SqlParameter("@PlotArea", obj.PlotArea),
+                    new SqlParameter("@PlotCost", obj.PlotCost),
+                    new SqlParameter("@PlotStatus", obj.PlotStatus),
+                    new SqlParameter("@PlotImage", obj.PlotImage),
+                    new SqlParameter("@Action", obj.Action)
+                };
+                dt = dbl.ExecProcPara_dt("Proc_PlotMaster", sp);
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            return dt;
+        }
+
+        public DataTable Contact(Contact obj)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] sp = new SqlParameter[]
+                {
+                    new SqlParameter("@Name", obj.Name),
+                    new SqlParameter("@Email", obj.Email),
+                    new SqlParameter("@Subject", obj.Subject),
+                    new SqlParameter("@Mobile", obj.Mobile),
+                    new SqlParameter("@Message", obj.Message),
+                    new SqlParameter("@Action",obj.Action)
+                };
+                dt = dbl.ExecProcPara_dt("Proc_Contact", sp);
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            return dt;
+        }
+
         #endregion
+
 
         #region SalePlot
 
@@ -205,6 +259,58 @@ namespace RealEstate.DataBase
 
 
         #endregion
+
+        #region Anuj
+
+        public DataTable MasterBlock(AddBlock objB)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] sp = new SqlParameter[]
+                {
+
+                    new SqlParameter("@Action", objB.Action),
+                    new SqlParameter("@BlockName",objB.Block),
+                    new SqlParameter("@SiteId",objB.ProjectId),
+                    new SqlParameter("@Id",objB.Id)
+                };
+                dt = dbl.ExecProcPara_dt("Sp_MasterBlock", sp);
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+            return dt;
+        }
+
+
+        public DataTable MasterPlotType(PlotTypeMaster objB)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] sp = new SqlParameter[]
+                {
+
+                   new SqlParameter("@Id",objB.Id),
+                    new SqlParameter("@PlotType",objB.PlotType),
+                    new SqlParameter("@Action", objB.Action)
+                };
+                dt = dbl.ExecProcPara_dt("Sp_MasterPlotType", sp);
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+            return dt;
+        }
+
+   
+
+        #endregion Anuj
 
     }
 }

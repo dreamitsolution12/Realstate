@@ -69,20 +69,6 @@ namespace RealEstate.Models
         public bool Is_Reminder { get; set; }
         public string Payment_Remark { get; set; }
         public string EntryBy { get;  set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
-        //public string Report { get; set; }
 
 
 

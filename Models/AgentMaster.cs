@@ -69,7 +69,7 @@ namespace RealEstate.Models
 
         [Display(Name = "Account Number")]
         [Required(ErrorMessage = "A/C no required")]
-        [StringLength(18, MinimumLength = 9, ErrorMessage = "Enter a valid A/C number")]
+        [RegularExpression(@"^([0-9]{9,18})$", ErrorMessage = "Enter a valid A/C number")]
         public string AccountNo { get; set; }
 
         [Display(Name = "Profile")]

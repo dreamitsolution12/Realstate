@@ -128,10 +128,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\DbLayer.cs" />
+    <Compile Include="Models\AddBlock.cs" />
     <Compile Include="Models\AgentMaster.cs" />
     <Compile Include="Models\CommonBase.cs" />
-    <Compile Include="DataBase\DbLayer.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\PlotMaster.cs" />
+    <Compile Include="Models\PlotTypeMaster.cs" />
     <Compile Include="Models\SalePlot.cs" />
     <Compile Include="Models\SiteMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
