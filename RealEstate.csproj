@@ -2240,6 +2240,7 @@
     <Folder Include="Media\AgentBank\" />
     <Folder Include="Media\AgentPAN\" />
     <Folder Include="Media\AgentProfile\" />
+    <Folder Include="Media\BookingFile\" />
     <Folder Include="Media\SiteImage\" />
   </ItemGroup>
   <ItemGroup>

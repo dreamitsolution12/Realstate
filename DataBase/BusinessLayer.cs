@@ -134,16 +134,14 @@ namespace RealEstate.DataBase
 
         #region SalePlot
 
-        public DataTable SalePlot(string Action,SalePlot obj)
+        public DataTable SalePlot(SalePlot obj)
         {
             DataTable dt = new DataTable();
             try
             {
                 SqlParameter[] sp = new SqlParameter[]
                 {
-                    new SqlParameter("@Action", Action),
                     new SqlParameter("@AgentId", obj.AgentId),
-                    new SqlParameter("@SiteId", obj.SiteId),
                     new SqlParameter("@Name", obj.Name),
                     new SqlParameter("@FatherName", obj.FatherName),
                     new SqlParameter("@PermanentAddress", obj.PermanentAddress),
@@ -178,9 +176,9 @@ namespace RealEstate.DataBase
                     new SqlParameter("@FinalPayable", obj.FinalPayable),
                     new SqlParameter("@Discount", obj.Discount),
                     new SqlParameter("@TotalPlotCost", obj.TotalPlotCost),
-                    new SqlParameter("@Date", obj.Date),
+                    new SqlParameter("@BookingDate", obj.Date),
                     new SqlParameter("@Remark", obj.Remark),
-                    new SqlParameter("@PlanType", obj.PaymentType),
+                    new SqlParameter("@PaymentType", obj.PaymentType),
                     new SqlParameter("@BookingAmount", obj.BookingAmount),
                     new SqlParameter("@DueAmount", obj.DueAmount),
                     new SqlParameter("@PaymentMode", obj.PaymentMode),
@@ -194,6 +192,7 @@ namespace RealEstate.DataBase
                     new SqlParameter("@InstallmentAmount", obj.InstallmentAmount),
                     new SqlParameter("@Is_Reminder", obj.Is_Reminder),
                     new SqlParameter("@Payment_Remark", obj.Payment_Remark),
+                    new SqlParameter("@EntryBy", obj.EntryBy),
                 };
                 dt = dbl.ExecProcPara_dt("USP_SalePlot", sp);
             }

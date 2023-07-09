@@ -2,7 +2,9 @@
 using RealEstate.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Mvc;
 
@@ -42,16 +44,28 @@ namespace RealEstate.Controllers
             return View(obj);
         }
         [HttpPost]
-        public ActionResult SalePlot(SalePlot obj)
+        public ActionResult SalePlot(SalePlot obj,HttpPostedFileBase FU_AdharFront, HttpPostedFileBase FU_AdharBack, HttpPostedFileBase FU_drivinglicence, HttpPostedFileBase FU_PAN)
         {
+            CommonBase objcom = new CommonBase();
+
+            ViewBag.flag = "0";
+            ViewBag.msg = "Server Not Responding";
 
 
+            obj.EntryBy = Convert.ToString(Session["UserName"]);
 
+            obj.AadharFront_url = objcom.SaveFile(FU_AdharFront, "/Media/BookingFile/");
+            obj.AadharBack_url = objcom.SaveFile(FU_AdharBack, "/Media/BookingFile/");
+            obj.DL_url = objcom.SaveFile(FU_drivinglicence, "/Media/BookingFile/");
+            obj.PAN_url = objcom.SaveFile(FU_PAN, "/Media/BookingFile/");
 
+            DataTable dt = bl.SalePlot(obj);
 
-
-
-
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ViewBag.flag = Convert.ToString(dt.Rows[0]["flag"]);
+                ViewBag.msg = Convert.ToString(dt.Rows[0]["msg"]);
+            }
 
             obj.AgentLst = CommonBase.BindDDl(bl.GetMasterData("1"));
             obj.SiteLst = CommonBase.BindDDl(bl.GetMasterData("2"));

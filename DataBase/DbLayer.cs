@@ -10,7 +10,7 @@ namespace RealEstate.DataBase
 {
     public class DbLayer
     {
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString);
+        SqlConnection con = new SqlConnection("Data Source=208.91.198.174;Initial Catalog=realstate1db;User Id=realstate1db;Password=Pradeep@123");
         public DataTable ExecProcPara_dt(string Procedure, SqlParameter[] sp)
         {
             DataTable dt = new DataTable();

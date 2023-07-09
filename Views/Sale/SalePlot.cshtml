@@ -113,19 +113,19 @@
                                 <div class="col-sm-6"></div>
                                 <div class="col-sm-3">
                                     <label>Aadhar Front</label>
-                                    <input type="file" class="form-control" id="FU_AdharFront" />
+                                    <input type="file" class="form-control" id="FU_AdharFront" name="FU_AdharFront" />
                                 </div>
                                 <div class="col-sm-3">
                                     <label>Aadhar Back</label>
-                                    <input type="file" class="form-control" id="FU_AdharBack" />
+                                    <input type="file" class="form-control" id="FU_AdharBack" name="FU_AdharBack"  />
                                 </div>
                                 <div class="col-sm-3">
                                     <label>DL</label>
-                                    <input type="file" class="form-control" id="FU_drivinglicence" />
+                                    <input type="file" class="form-control" id="FU_drivinglicence" name="FU_drivinglicence" />
                                 </div>
                                 <div class="col-sm-3">
                                     <label>PAN</label>
-                                    <input type="file" class="form-control" id="FU_PAN" />
+                                    <input type="file" class="form-control" id="FU_PAN" name="FU_PAN" />
                                 </div>
                             </div>
                             <hr />
@@ -145,13 +145,13 @@
                             <div class="form-group row mb-4 mt-3">
                                 <div class="col-sm-4">
                                     <label>Property Name</label>
-                                    @Html.DropDownListFor(m => m.SiteId, Model.SiteLst, new { @class = "form-control",@onchange= "BindBlock('SiteId','Block')" })
+                                    @Html.DropDownListFor(m => m.PropertyId, Model.SiteLst, new { @class = "form-control",@onchange= "BindBlock('PropertyId','Block')" })
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Block</label>
                                     @Html.DropDownListFor(m => m.Block, new List<SelectListItem>() {
                                    new SelectListItem() { Text = "--none--", Value = "" } },
-                                   new { @class = "form-control",@onchange= "BindPlotNo('SiteId','Block','PlotNo')" })
+                                   new { @class = "form-control",@onchange= "BindPlotNo('PropertyId','Block','PlotNo')" })
 
                                 </div>
                                 <div class="col-sm-4">
@@ -161,18 +161,10 @@
                             </div>
                             <hr />
                             <div class="form-group row mt-4 mb-3">
-                                <div class="col-sm-4">
-                                    <label>Development Rate(Per Sq. Ft.)</label>
-                                    @Html.TextBoxFor(m => m.DevelopmentRate, new { @class = "form-control" })
-                                </div>
-                                <div class="col-sm-4">
-                                    <label>Development Charge</label>
-                                    @Html.TextBoxFor(m => m.DevelopmentCharge, new { @class = "form-control" })
-                                </div>
 
                                 <div class="col-sm-4">
                                     <label>Plot Rate</label>
-                                    @Html.TextBoxFor(m => m.PlotRate, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.PlotRate, new { @class = "form-control",@onchange= "FinalCalculation()" })
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Plot Area</label>
@@ -180,25 +172,34 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Plot Cost</label>
-                                    @Html.TextBoxFor(m => m.PlotCost, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.PlotCost, new { @class = "form-control" , @readonly = "readonly" })
                                 </div>
                                 <div class="col-sm-4">
+                                    <label>Development Rate(Per Sq. Ft.)</label>
+                                    @Html.TextBoxFor(m => m.DevelopmentRate, new { @class = "form-control", @onchange = "FinalCalculation()" })
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Development Charge</label>
+                                    @Html.TextBoxFor(m => m.DevelopmentCharge, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+
+                                <div class="col-sm-4">
                                     <label>PLC Amount</label>
-                                    @Html.TextBoxFor(m => m.PLCAmount, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.PLCAmount, new { @class = "form-control", @onchange = "FinalCalculation()" })
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label>Other Charges</label>
-                                    @Html.TextBoxFor(m => m.OtherCharges, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.OtherCharges, new { @class = "form-control", @onchange = "FinalCalculation()" })
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label>Total Plot Cost( ₹ )</label>
-                                    @Html.TextBoxFor(m => m.TotalPlotCost, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.TotalPlotCost, new { @class = "form-control", @readonly = "readonly" })
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Discount( ₹ )</label>
-                                    @Html.TextBoxFor(m => m.Discount, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.Discount, new { @class = "form-control", @onchange = "FinalCalculation()" })
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Final Payable</label>
@@ -206,8 +207,8 @@
                                 </div>
 
                                 <div class="col-sm-4">
-                                    <label>Booking Date</label>
-                                    @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
+                                    <label>Booking Date <span style="color:red">*</span> </label>
+                                    @Html.TextBoxFor(m => m.Date, new { @class = "form-control",@type="date" , required = "required" })
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Remark</label>
@@ -228,7 +229,7 @@
                             <div class="form-group mt-4">*@
                                 <div class="col-sm-3 FullPayment EMIPlan" style="display:none">
                                     <label>Booking Amount</label>
-                                    @Html.TextBoxFor(m => m.BookingAmount, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.BookingAmount, new { @class = "form-control" ,@onchange = "FinalCalculation()" })
                                 </div>
                                 <div class="col-sm-3 FullPayment EMIPlan" style="display:none">
                                     <label>Due Amount</label>
@@ -253,11 +254,11 @@
 
                                 <div class="col-sm-4 EMIPlan" style="display:none">
                                     <label>No. of Months</label>
-                                    @Html.TextBoxFor(m => m.EMI_Month, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.EMI_Month, new { @class = "form-control", @onchange = "FinalCalculation()" })
                                 </div>
                                 <div class="col-sm-4 EMIPlan" style="display:none">
                                     <label>Installment Amount</label>
-                                    @Html.TextBoxFor(m => m.BookingAmount, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.TextBoxFor(m => m.InstallmentAmount, new { @class = "form-control", @readonly = "readonly" })
                                 </div>
                                 <div class="col-sm-4 mt-4 FullPayment EMIPlan" style="display:none" >
                                     @Html.CheckBoxFor(m => m.Is_Reminder)
@@ -292,7 +293,7 @@
                                 </div>
                                 <div class="col-sm-4 ChequeDate"  style="display:none" >
                                     <label>Cheque Date</label>
-                                    @Html.TextBoxFor(m => m.ChequeDate, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.ChequeDate, new { @class = "form-control",@type="date" })
                                 </div>
                                 <div class="col-sm-4 TransactionID" style="display:none">
                                     <label>Transaction ID</label>
@@ -303,7 +304,7 @@
                             </div>
                             @*<hr />*@
                             <div class="col-sm-4">
-                                <input type="submit" class="btn btn-outline-info btn-block" value="Book Plot" />
+                                <input type="submit" class="btn btn-outline-info btn-block" value="Book Now" />
                             </div>
                         </form>
                     </div>
@@ -315,7 +316,67 @@
 
 <script>
 
+    $(document).ready(function () {
+
+        if ('@ViewBag.flag' != '') {
+            alert('@ViewBag.msg');
+            if ('@ViewBag.flag' == '1') {
+               window.location.href = window.location.href;
+            }
+        }
+
+
+
+    })
+
+
+
     function FinalCalculation() {
+
+        var plotRate = parseFloat($('#PlotRate').val() || 0);
+        var plotArea = parseInt($('#PlotArea').val()||0);
+
+        var plotCost = plotRate * plotArea;
+
+        $('#PlotCost').val(plotCost.toFixed(0));
+
+        var developmentRate = $('#DevelopmentRate').val();
+
+        var developmentcharge = developmentRate * plotArea;
+
+        $('#DevelopmentCharge').val(developmentcharge.toFixed(0));
+
+        var PLCAmounts = parseFloat($('#PLCAmount').val() || 0)
+        var OtherCharge = parseFloat($('#OtherCharges').val() || 0)
+
+        var totalPlotCost = plotCost + developmentcharge + PLCAmounts + OtherCharge;
+
+        $('#TotalPlotCost').val(totalPlotCost.toFixed(0));
+
+        var discount = parseFloat($('#Discount').val() || 0);
+
+        var FinalAmt = totalPlotCost - discount;
+
+        $('#FinalPayable').val(FinalAmt.toFixed(0));
+
+        var bookingAmount = parseFloat($('#BookingAmount').val() || 0);
+
+        var dueAmount = FinalAmt - bookingAmount;
+
+        $('#DueAmount').val(dueAmount.toFixed(0));
+
+
+        if ($('#PaymentType').val() == 'EMI') {
+            var EMIMonth = parseInt($('#EMI_Month').val() || 1);
+
+            var EMIAmt = dueAmount / EMIMonth;
+
+            $('#InstallmentAmount').val(EMIAmt.toFixed(0));
+        }
+        else {
+            $('#EMI_Month').val(0);
+            $('#InstallmentAmount').val(0);
+        }
 
 
 
@@ -346,8 +407,10 @@
                 $('#PlotArea').val(data[0].PlotArea);
                 $('#PlotCost').val(data[0].PlotCost);
 
-                $('#TotalPlotCost').val(data[0].PlotCost);
-                $('#FinalPayable').val(data[0].PlotCost);
+
+                FinalCalculation();
+
+
 
             }
         })

@@ -23,7 +23,7 @@ namespace RealEstate.Models
         public string IP { get; set; }
         public string msg { get; set; }
 
-        public string SaveFile(HttpPostedFileBase _file, string _location)
+        public  string SaveFile(HttpPostedFileBase _file, string _location)
         {
             string _path = null;
             if (_file != null)
@@ -36,7 +36,7 @@ namespace RealEstate.Models
             return _path;
         }
 
-        public string SaveFiles(HttpPostedFileBase[] _files, string _location)
+        public  string SaveFiles(HttpPostedFileBase[] _files, string _location)
         {
             string _path = null;
             if (_files != null)
@@ -74,7 +74,7 @@ namespace RealEstate.Models
             return list;
         }
 
-        public string apicall(string url)
+        public static string apicall(string url)
         {
             HttpWebRequest httpreq = (HttpWebRequest)WebRequest.Create(url);
 
